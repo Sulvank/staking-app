@@ -2,14 +2,15 @@
 
 pragma solidity 0.8.28;
 
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
+contract StakingToken is ERC20 {
 
-contract StakingApp {
+    constructor(string memory name_, string memory symbol_) ERC20(name_, symbol_) {
+        
+    } 
 
-    address public stakingToken;
-
-    constructor(address stakingToken_, address admin_) {
-        stakingToken = stakingToken_;
+    function mint(uint256 amount_) external {
+        _mint(msg.sender, amount_);
     }
 }
-
